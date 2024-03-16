@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor(private modalService: NgbModal, private titleService: Title, private metaService: Meta) {
     this.setTitle(this.sysTitle);
-    this.metaService.updateTag({name: 'description', content: 'O Petshop de todos os rio-grandenses.'});
+    this.metaService.updateTag({name: 'description', content: 'O Petshop de todos os riograndenses.'});
   }
 
   public setTitle(newTitle: string) {

@@ -6,9 +6,6 @@
         <img src="./assets/images/logo.png" alt="Homepage" height="36">
       </a>
       <a class="nav-link link-light fw-bold" routerLink="/">{{sysTitle}}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -20,7 +17,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/sobre">Sobre</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" data-bs-theme="dark">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Área do Usuário
             </a>
@@ -43,3 +40,80 @@
   <router-outlet></router-outlet>
 </main>
 
+<footer class="footer bg-dark text-lg-start text-muted" data-bs-theme="dark">
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <div class="me-5 d-none d-lg-block">
+      <span>Entre em contato conosco através de nossas redes sociais!</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="bi bi-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="bi bi-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="bi bi-github"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section>
+    <div class="row mt-3">
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+        <h6 class="text-uppercase fw-bold mb-4">
+          <i class="fas fa-gem me-3"></i>{{sysTitle}}
+        </h6>
+        <p>
+          Entre em <u>contato conosco</u> ou use nosso <u>sistema Web</u> para aproveitar
+          o melhor do petshop da região junto com seu pet.
+        </p>
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        <h6 class="text-uppercase fw-bold mb-4">
+          Páginas
+        </h6>
+        <p>
+          <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" routerLink="/loja">Loja</a>
+        </p>
+        <p>
+          <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" routerLink="/servicos">Serviços</a>
+        </p>
+        <p>
+          <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" routerLink="/sobre">Sobre</a>
+        </p>
+      </div>
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+        <h6 class="text-uppercase fw-bold mb-4">
+          Contato
+        </h6>
+        <p>
+          <i class="bi bi-house me-3"></i>Porto Alegre, R. Gen. Marcony da Silveira
+        </p>
+        <p>
+          <i class="bi bi-house me-3"></i>Porto Alegre, Av. Senador A. Filho de Oliveira
+        </p>
+        <p>
+          <i class="bi bi-envelope me-3"></i>contato&#64;mangaiapetshop.com.br
+        </p>
+        <p>
+          <i class="bi bi-telephone me-3"></i>5551999999999
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- Copyright -->
+  <div class="text-center p-4" [style.background-color]="'rgba(0,0,0,0.05)'">
+    &copy; 2024 Copyright - <a class="text-reset fw-bold" routerLink="/license">BSD-3-Clause</a>
+  </div>
+</footer>

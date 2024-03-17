@@ -4,5 +4,4 @@ import { BrowserModule } from "@angular/platform-browser";
 imports: [
     BrowserModule,
     NgbModule,
-    //AppRoutingModule,
 ];

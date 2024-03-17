@@ -1,0 +1,9 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="entrar()">
+        <input formControlName="login" type="text" name="login"/>
+        <span class="text-danger" *ngIf="enviado && form.controls['login'].errors?.['required']">Login obrigatório!</span>
+        <input formControlName="senha" type="password" name="senha"/>
+        <span class="text-danger" *ngIf="enviado && form.controls['senha'].errors?.['required']">Senha obrigatória!</span>
+        <button type="submit">Entrar</button>
+    </form>
+</div>

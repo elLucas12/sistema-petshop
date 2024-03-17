@@ -1,12 +1,13 @@
+<div class="d-flex flex-column h-100">
 <header>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" routerLink="/">
         <img src="./assets/images/logo.png" alt="Homepage" height="36">
       </a>
       <a class="nav-link link-light fw-bold" routerLink="/">{{sysTitle}}</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarPagesLinks">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" routerLink="/loja">Loja</a>
@@ -22,12 +23,12 @@
               Área do Usuário
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Entrar</a></li>
-              <li><a class="dropdown-item" href="#">Registrar-se</a></li>
+              <li><a class="dropdown-item" routerLink="/login">Entrar</a></li>
+              <li><a class="dropdown-item" routerLink="/registrar">Registrar-se</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Sobre o log-in</a></li>
+              <li><a class="dropdown-item" href="#">Sobre o login</a></li>
             </ul>
           </li>
         </ul>
@@ -36,11 +37,11 @@
   </nav>
 </header>
 
-<main>
+<main class="mb-5">
   <router-outlet></router-outlet>
 </main>
 
-<footer class="footer bg-dark text-lg-start text-muted" data-bs-theme="dark">
+<footer class="footer mt-auto bg-dark text-lg-start text-muted" data-bs-theme="dark">
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <div class="me-5 d-none d-lg-block">
       <span>Entre em contato conosco através de nossas redes sociais!</span>
@@ -69,7 +70,7 @@
 
   <!-- Links -->
   <section>
-    <div class="row mt-3">
+    <div class="row mt-3" [style.width]="'100%'">
       <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
         <h6 class="text-uppercase fw-bold mb-4">
           <i class="fas fa-gem me-3"></i>{{sysTitle}}
@@ -98,10 +99,10 @@
           Contato
         </h6>
         <p>
-          <i class="bi bi-house me-3"></i>Porto Alegre, R. Gen. Marcony da Silveira
+          <i class="bi bi-house me-3"></i>Porto Alegre, R. Gen. M. da Silveira
         </p>
         <p>
-          <i class="bi bi-house me-3"></i>Porto Alegre, Av. Senador A. Filho de Oliveira
+          <i class="bi bi-house me-3"></i>Porto Alegre, Av. Senador F. de Oliveira
         </p>
         <p>
           <i class="bi bi-envelope me-3"></i>contato&#64;mangaiapetshop.com.br
@@ -117,3 +118,4 @@
     &copy; 2024 Copyright - <a class="text-reset fw-bold" routerLink="/license">BSD-3-Clause</a>
   </div>
 </footer>
+</div>

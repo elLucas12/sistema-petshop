@@ -1,0 +1,19 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="registrar()">
+        <input formControlName="uname" type="text" name="login"/>
+        <span class="text-danger" *ngIf="enviado && form.controls['uname'].errors?.['required']">Nome de usuário obrigatório!</span>
+
+        <input formControlName="rname" type="text" name="rname"/>
+        <span class="text-danger" *ngIf="enviado && form.controls['rname'].errors?.['required']">Nome obrigatório!</span>
+
+        <input formControlName="email" type="email" name="email"/>
+        <span class="text-danger" *ngIf="enviado && form.controls['email'].errors?.['required']">Email obrigatório!</span>
+        
+        <input formControlName="senha" type="password" name="senha"/>
+        <span class="text-danger" *ngIf="enviado && form.controls['senha'].errors?.['required']">Senha obrigatória!</span>
+
+        <input formControlName="senhaConf" type="password" name="senhaConf"/>
+        <span class="text-danger" *ngIf="enviado && form.controls['senhaConf'].errors?.['required']">Confirmação obrigatória!</span>
+        <button type="submit">Enviar</button>
+    </form>
+</div>

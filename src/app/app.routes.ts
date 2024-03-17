@@ -4,6 +4,8 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { LicenseComponent } from './license/license.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrarComponent } from './registrar/registrar.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +27,13 @@ export const routes: Routes = [
     {
         path: 'license',
         component: LicenseComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'registrar',
+        component: RegistrarComponent
     }
 ];

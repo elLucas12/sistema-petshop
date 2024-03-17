@@ -1,0 +1,11 @@
+.img-esq {
+    border-right: 1px dashed;
+}
+
+.img-dir {
+    border-left: 1px dashed;
+}
+
+.img-dir img:hover, .img-esq img:hover {
+    transform: scale(1.2, 1.2) rotate(5deg);
+}

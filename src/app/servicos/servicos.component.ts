@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { startOfDay } from 'date-fns';
-import { CalendarView, CalendarEvent, CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarView, CalendarEvent, CalendarModule } from 'angular-calendar';
+
+import LocalePT from '@angular/common/locales/pt';
+registerLocaleData(LocalePT);
 
 export enum Servico {
   banho,
@@ -17,11 +19,16 @@ export enum Porte {
 @Component({
   selector: 'app-servicos',
   standalone: true,
-  imports: [CommonModule, CalendarModule],
+  imports: [
+    CommonModule,
+    CalendarModule
+  ],
   templateUrl: './servicos.component.html',
   styleUrl: './servicos.component.css'
 })
 export class ServicosComponent {
+  locale: string = 'pt-BR';
+
   isPorteSelecionado: boolean = false;
   porteSelecionado: Porte = Porte.pequeno;
   isServicoSelecionado: boolean = false;
@@ -31,6 +38,10 @@ export class ServicosComponent {
   viewCalendario: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   isDataSelecionada: boolean = false;
+
+  constructor() {
+
+  }
 
   eventosCalendario: CalendarEvent[] = [
     {

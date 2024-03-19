@@ -1,4 +1,8 @@
 import { Routes } from '@angular/router';
+import { importProvidersFrom } from '@angular/core';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 import { LojaComponent } from './loja/loja.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
@@ -18,6 +22,7 @@ export const routes: Routes = [
     },
     {
         path: 'servicos',
+        providers: [importProvidersFrom(CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}))],
         component: ServicosComponent
     },
     {

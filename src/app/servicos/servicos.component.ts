@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { startOfDay } from 'date-fns';
 import { CalendarView, CalendarEvent, CalendarModule } from 'angular-calendar';
+
+import { AgendamentoService } from '../agendamento.service';
 
 import LocalePT from '@angular/common/locales/pt';
 registerLocaleData(LocalePT);
@@ -29,30 +30,23 @@ export enum Porte {
 export class ServicosComponent {
   locale: string = 'pt-BR';
 
+  // Seleção de serviços
   isPorteSelecionado: boolean = false;
   porteSelecionado: Porte = Porte.pequeno;
   isServicoSelecionado: boolean = false;
   servicoSelecionado: Servico = Servico.banho;
   
+  // Calendário
   viewDateCalendario: Date = new Date();
   viewCalendario: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   isDataSelecionada: boolean = false;
 
   constructor() {
-
+    
   }
 
-  eventosCalendario: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      title: 'Primeiro Evento'
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'Segundo Evento'
-    }
-  ]
+  eventosCalendario: CalendarEvent[] = [];
 
   selecaoPorte(porte: Porte): void {
     this.isPorteSelecionado = true;
@@ -69,6 +63,11 @@ export class ServicosComponent {
   }
 
   cliqueDia({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    console.log(date);
+    console.log(`Data selecionada => "${date}"`);
+    let val = confirm(`Confirmar agendamento para ${date.toLocaleDateString()}?`);
+    if (val) {
+      AgendamentoService.setDiaAgendamento(date);
+      console.log(`Definida data de agenda: "${date.toLocaleDateString()}"`);
+    }
   }
 }

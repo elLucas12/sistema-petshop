@@ -49,30 +49,10 @@
         <div class="col-md-4">
             <h3>{{ viewDateCalendario | calendarDate:(viewCalendario + 'ViewTitle'):locale }}</h3>
         </div>
-
-        <div class="col-md-4">
-            <div class="btn-group">
-                <div class="btn btn-primary" (click)="setCalendarView(CalendarView.Month)" [class.active]="viewCalendario === CalendarView.Month">
-                    Mês
-                </div>
-                <div class="btn btn-primary" (click)="setCalendarView(CalendarView.Week)" [class.active]="viewCalendario === CalendarView.Week">
-                    Semana
-                </div>
-                <div class="btn btn-primary" (click)="setCalendarView(CalendarView.Day)" [class.active]="viewCalendario === CalendarView.Day">
-                    Dia
-                </div>
-            </div>
-        </div>
     </div>
 
     <div [ngSwitch]="viewCalendario">
         <mwl-calendar-month-view (dayClicked)="cliqueDia($event.day)" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDateCalendario" [events]="eventosCalendario" [locale]="locale">
         </mwl-calendar-month-view>
-    
-        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDateCalendario" [events]="eventosCalendario" [locale]="locale">
-        </mwl-calendar-week-view>
-    
-        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDateCalendario" [events]="eventosCalendario" [locale]="locale">
-        </mwl-calendar-day-view>
     </div>
 </div>

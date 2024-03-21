@@ -3,7 +3,7 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { CalendarView, CalendarEvent, CalendarModule } from 'angular-calendar';
 import { Router } from '@angular/router';
 
-import { AgendamentoService, Servico, Porte } from '../agendamento.service';
+import { AgendamentoHandler, Servico, Porte } from '../agendamento';
 
 import LocalePT from '@angular/common/locales/pt';
 registerLocaleData(LocalePT);
@@ -60,7 +60,7 @@ export class ServicosComponent {
         servico: this.servicoSelecionado,
         porte: this.porteSelecionado,
       };
-      AgendamentoService.setDiaAgendamento(agendamento);
+      AgendamentoHandler.setDiaAgendamento(agendamento);
       console.log(`Definida data de agenda: "${date.toLocaleDateString()}"`);
       this.router.navigate(['/finalizar-compra']);
     }

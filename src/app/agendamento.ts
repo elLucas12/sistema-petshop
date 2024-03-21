@@ -13,7 +13,7 @@ export enum Porte {
 @Injectable({
   providedIn: 'root'
 })
-export class AgendamentoService {
+export class AgendamentoHandler {
   private static _storageString: string = 'informacoes-agendamento';
 
   /**

@@ -4,7 +4,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AreaUsuarioService } from './area-usuario.service';
+import { AreaUsuarioHandler } from './area-usuario';
 
 @Component({
   selector: 'app-root',
@@ -58,6 +58,6 @@ export class AppComponent {
         senha: ''
       }
     ];
-    AreaUsuarioService.setInformacoesLogin(info);
+    AreaUsuarioHandler.setInformacoes(info);
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AgendamentoService, Servico, Porte } from '../agendamento.service';
-import { AreaUsuarioService } from '../area-usuario.service';
+import { AgendamentoHandler, Servico, Porte } from '../agendamento';
+import { AreaUsuarioHandler } from '../area-usuario';
 
 @Component({
   selector: 'app-finalizar-compra',
@@ -12,7 +12,7 @@ import { AreaUsuarioService } from '../area-usuario.service';
 })
 export class FinalizarCompraComponent {
   constructor(private router: Router) {
-    if (!AreaUsuarioService.isUserLogado()) {
+    if (!AreaUsuarioHandler.isUserLogado()) {
       this.router.navigate(['/registrar']);
     }
   }

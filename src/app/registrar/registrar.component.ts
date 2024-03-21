@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import * as sha512 from 'js-sha512';
 
-import { AreaUsuarioService } from '../area-usuario.service';
+import { AreaUsuarioHandler } from '../area-usuario';
 
 @Component({
   selector: 'app-registrar',
@@ -43,7 +44,12 @@ export class RegistrarComponent implements OnInit {
         // this.form.controls['senhaConf'].markAsDirty({onlySelf: true});
       } else {
         alert(`Registrado como "${uname}" (${rname}), com o email "${email}" e senha "${senha}".`);
-        AreaUsuarioService.getInformacoesLogin
+        let infologin = AreaUsuarioHandler.getInformacoes();
+        infologin[1]['uname'] = uname;
+        infologin[1]['rname'] = rname;
+        infologin[1]['email'] = email;
+        infologin[1]['senha'] = sha512.sha512(senha);
+        AreaUsuarioHandler.setInformacoes(infologin);
       }
     } else {
       this.markAllControlsAsDirty(Object.values(this.form.controls));

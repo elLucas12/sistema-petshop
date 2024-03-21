@@ -10,6 +10,7 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 import { LicenseComponent } from './license/license.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './registrar/registrar.component';
+import { FinalizarCompraComponent } from './finalizar-compra/finalizar-compra.component';
 
 export const routes: Routes = [
     {
@@ -40,5 +41,9 @@ export const routes: Routes = [
     {
         path: 'registrar',
         component: RegistrarComponent
+    },
+    {
+        path: 'finalizar-compra',
+        component: FinalizarCompraComponent
     }
 ];

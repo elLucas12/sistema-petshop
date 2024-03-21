@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { AreaUsuarioService } from '../area-usuario.service';
+
 @Component({
   selector: 'app-registrar',
   standalone: true,
@@ -41,6 +43,7 @@ export class RegistrarComponent implements OnInit {
         // this.form.controls['senhaConf'].markAsDirty({onlySelf: true});
       } else {
         alert(`Registrado como "${uname}" (${rname}), com o email "${email}" e senha "${senha}".`);
+        AreaUsuarioService.getInformacoesLogin
       }
     } else {
       this.markAllControlsAsDirty(Object.values(this.form.controls));

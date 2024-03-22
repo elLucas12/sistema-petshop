@@ -20,6 +20,7 @@ import { AreaUsuarioHandler } from '../area-usuario';
   styleUrl: './registrar.component.css'
 })
 export class RegistrarComponent implements OnInit {
+  
   /** Objeto que administra todos os campos do formulário */
   form: FormGroup = new FormGroup('');
 

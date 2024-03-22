@@ -1,6 +1,16 @@
 import * as sha512 from 'js-sha512';
 
+/**
+ * Armazena e administra os dados atuais do browser (localStorage) e, se for o 
+ * caso, de servidores externos.
+ * 
+ * A partir deste objeto é possível realizar consultas pontais que tenham relação
+ * aos dados do usuário por meio das funções estáticas, uma vez que os dados não
+ * tenham dependência de hierarquia.
+ */
 export class AreaUsuarioHandler {
+
+  /** Nome do indíce do localStorage para armazenamento de informações locais. */
   private static _storageString: string = 'informacoes-login';
 
   /**

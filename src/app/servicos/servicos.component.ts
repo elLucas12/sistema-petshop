@@ -61,7 +61,7 @@ export class ServicosComponent {
         servico: this.servicoSelecionado,
         porte: this.porteSelecionado,
       };
-      AgendamentoHandler.setDiaAgendamento(agendamento);
+      AgendamentoHandler.setInformacoes(agendamento);
 
       console.log(`Definida data de agenda: "${date.toLocaleDateString()}"`);
       this.router.navigate(['/finalizar-compra']);

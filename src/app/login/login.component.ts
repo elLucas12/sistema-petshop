@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+  
   /** Atributo de representação/armazenamento das informações de formulário */
   form: FormGroup = new FormGroup('');
 

@@ -1,5 +1,3 @@
-import { Injectable } from '@angular/core';
-
 export enum Servico {
   banho,
   tosa
@@ -10,9 +8,6 @@ export enum Porte {
   grande
 }
 
-@Injectable({
-  providedIn: 'root'
-})
 export class AgendamentoHandler {
   private static _storageString: string = 'informacoes-agendamento';
 

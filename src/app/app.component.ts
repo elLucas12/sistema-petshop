@@ -48,13 +48,14 @@ export class AppComponent {
   private definirInfoLogin() {
     let info = [
       {
-        logado: false
+        logado: false,
+        retorno: [false, '']
       },
       {
         uname: '',
         rname: '',
-        email: '',
         telefone: '',
+        email: '',
         senha: ''
       }
     ];

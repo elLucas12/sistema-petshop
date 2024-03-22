@@ -55,12 +55,14 @@ export class ServicosComponent {
     console.log(`Data selecionada => "${date}"`);
     let val = confirm(`Confirmar agendamento para ${date.toLocaleDateString()}?`);
     if (val) {
+      // Redefinindo dados de agendamento no localStorage
       let agendamento = {
         data_agendamento: date.toUTCString(),
         servico: this.servicoSelecionado,
         porte: this.porteSelecionado,
       };
       AgendamentoHandler.setDiaAgendamento(agendamento);
+
       console.log(`Definida data de agenda: "${date.toLocaleDateString()}"`);
       this.router.navigate(['/finalizar-compra']);
     }

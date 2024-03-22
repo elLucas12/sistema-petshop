@@ -1,7 +1,3 @@
-import { Injectable } from '@angular/core';
-@Injectable({
-  providedIn: 'root'
-})
 export class AreaUsuarioHandler {
   private static _storageString: string = 'informacoes-login';
 

@@ -1,19 +1,51 @@
-<div class="container">
+<div *ngIf="!isLogado" class="container mt-4 col-12 col-md-8 col-lg-6 col-xl-5">
     <form [formGroup]="form" (ngSubmit)="registrar()">
-        <input formControlName="uname" type="text" name="login"/>
-        <span class="text-danger" *ngIf="enviado && form.controls['uname'].errors?.['required']">Nome de usuário obrigatório!</span>
+        <div class="text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
+            <p class="mb-3">Entre com seu dados!</p>
+        </div>
 
-        <input formControlName="rname" type="text" name="rname"/>
-        <span class="text-danger" *ngIf="enviado && form.controls['rname'].errors?.['required']">Nome obrigatório!</span>
-
-        <input formControlName="email" type="email" name="email"/>
-        <span class="text-danger" *ngIf="enviado && form.controls['email'].errors?.['required']">Email obrigatório!</span>
-        
-        <input formControlName="senha" type="password" name="senha"/>
-        <span class="text-danger" *ngIf="enviado && form.controls['senha'].errors?.['required']">Senha obrigatória!</span>
-
-        <input formControlName="senhaConf" type="password" name="senhaConf"/>
-        <span class="text-danger" *ngIf="enviado && form.controls['senhaConf'].errors?.['required']">Confirmação obrigatória!</span>
-        <button type="submit">Enviar</button>
+        <div class="form-group form-outline form-white mb-4">
+            <label for="uname">Nome de Usuário</label>
+            <input id="uname" formControlName="uname" type="text" name="uname" class="form-control" placeholder="Nome de Usuário" aria-describedby="uname-desc" required />
+            <small id="uname-desc" class="form-text text-muted">Esse será o apelido utilizado para log-in no sistema</small><br>
+            <span class="text-danger" *ngIf="enviado && form.controls['uname'].errors?.['required']">Nome de usuário obrigatório!</span>
+        </div>
+        <div class="form-group form-outline form-white mb-4">
+            <label for="rname">Nome Completo</label>
+            <input id="rname" formControlName="rname" type="text" name="rname" class="form-control" placeholder="Nome Completo" required />
+            <span class="text-danger" *ngIf="enviado && form.controls['rname'].errors?.['required']">Nome obrigatório!</span>
+        </div>
+        <div class="form-group form-outline form-white mb-4">
+            <label for="telefone">Número de Telefone</label>
+            <input id="telefone" formControlName="telefone" type="tel" name="telefone" class="form-control" placeholder="Número de Telefone" required />
+            <span class="text-danger" *ngIf="enviado && form.controls['telefone'].errors?.['required']">Número de telefone obrigatório!</span>
+        </div>
+        <div class="form-group form-outline form-white mb-4">
+            <label for="email">E-Mail</label>
+            <input id="email" formControlName="email" type="email" name="email" class="form-control" placeholder="E-Mail" required />
+            <span class="text-danger" *ngIf="enviado && form.controls['email'].errors?.['required']">Email obrigatório!</span>
+        </div>
+        <div class="form-group form-outline form-white mb-4">
+            <label for="senha">Senha</label>
+            <input id="senha" formControlName="senha" type="password" name="senha" class="form-control" placeholder="Senha" required />
+            <span class="text-danger" *ngIf="enviado && form.controls['senha'].errors?.['required']">Senha obrigatória!</span>
+        </div>
+        <div class="form-group form-outline mb-4">
+            <label for="senhaConf">Repita a Senha</label>
+            <input id="senhaConf" formControlName="senhaConf" type="password" name="senhaConf" class="form-control" placeholder="Repita a Senha" required />
+            <span class="text-danger" *ngIf="enviado && form.controls['senhaConf'].errors?.['required']">Confirmação obrigatória!</span>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="termos" required />
+            <label class="form-check-label" for="termos">
+                Aceito os <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-75 link-underline-opacity-100-hover">termos de uso</a>.
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Registrar-se</button>
     </form>
+</div>
+<div *ngIf="isLogado">
+    <h1 class="h1">Você está logado!</h1>
+    <p class="fs-4">Para cadastrar um novo usuário, saia de sua conta...</p>
 </div>

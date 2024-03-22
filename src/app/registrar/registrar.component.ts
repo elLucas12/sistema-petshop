@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as sha512 from 'js-sha512';
 
 import { AreaUsuarioHandler } from '../area-usuario';
 
@@ -71,16 +70,12 @@ export class RegistrarComponent implements OnInit {
         // this.form.controls['senhaConf'].markAsDirty({onlySelf: true});
       } else {
         alert(`Registrado como "${uname}" (${rname}), com contato "${email}"/${telefone} e senha "${senha}".`);
-        let info = AreaUsuarioHandler.getInformacoes();
-        info[1]['uname'] = uname;
-        info[1]['rname'] = rname;
-        info[1]['telefone'] = telefone;
-        info[1]['email'] = email;
-        info[1]['senha'] = sha512.sha512(senha);
-        AreaUsuarioHandler.setInformacoes(info);
+        AreaUsuarioHandler.makeExemploRegistro(uname, rname, telefone, email, senha);
 
         // Verificação de redirecionamento
+        let info = AreaUsuarioHandler.getInformacoes();
         if (info[0]['retorno'][0]) {
+          info[0]['retorno'][0] = false;
           this.router.navigate([info[0]['retorno'][1]]);
         } else {
           this.router.navigate(['']);

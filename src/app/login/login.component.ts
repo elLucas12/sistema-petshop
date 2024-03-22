@@ -86,7 +86,17 @@ export class LoginComponent implements OnInit {
       const senha = this.form.get('senha')?.value;
       alert(`O login foi ${uname} com a senha ${senha}.`);
 
+      // Realizando log-in e redirecionamento
+      AreaUsuarioHandler.makeExemploLogin(uname, senha);
       
+      // Verificação de redirecionamento
+      let info = AreaUsuarioHandler.getInformacoes();
+      if (info[0]['retorno'][0]) {
+        info[0]['retorno'][0] = false;
+        this.router.navigate([info[0]['retorno'][1]]);
+      } else {
+        this.router.navigate(['']);
+      }
     } else {
       this.markAllControlsAsDirty(Object.values(this.form.controls));
     }

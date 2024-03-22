@@ -7,33 +7,35 @@
 
         <div class="form-group form-outline form-white mb-4">
             <label for="uname">Nome de Usuário</label>
-            <input id="uname" formControlName="uname" type="text" name="uname" class="form-control" placeholder="Nome de Usuário" aria-describedby="uname-desc" required />
+            <input id="uname" formControlName="uname" type="text" name="uname" class="form-control" placeholder="Nome de Usuário" aria-describedby="uname-desc" maxlength="32" required />
             <small id="uname-desc" class="form-text text-muted">Esse será o apelido utilizado para log-in no sistema</small><br>
             <span class="text-danger" *ngIf="enviado && form.controls['uname'].errors?.['required']">Nome de usuário obrigatório!</span>
         </div>
         <div class="form-group form-outline form-white mb-4">
             <label for="rname">Nome Completo</label>
-            <input id="rname" formControlName="rname" type="text" name="rname" class="form-control" placeholder="Nome Completo" required />
+            <input id="rname" formControlName="rname" type="text" name="rname" class="form-control" placeholder="Nome Completo" maxlength="64" required />
             <span class="text-danger" *ngIf="enviado && form.controls['rname'].errors?.['required']">Nome obrigatório!</span>
         </div>
         <div class="form-group form-outline form-white mb-4">
             <label for="telefone">Número de Telefone</label>
-            <input id="telefone" formControlName="telefone" type="tel" name="telefone" class="form-control" placeholder="Número de Telefone" required />
+            <input id="telefone" formControlName="telefone" type="tel" name="telefone" class="form-control" placeholder="Número de Telefone" minlength="10" maxlength="14" required />
             <span class="text-danger" *ngIf="enviado && form.controls['telefone'].errors?.['required']">Número de telefone obrigatório!</span>
+            <span class="text-danger" *ngIf="enviado && (form.controls['telefone'].errors?.['minlength'] || form.controls['telefone'].errors?.['maxlength'])">Número de telefone inválido!</span>
         </div>
         <div class="form-group form-outline form-white mb-4">
             <label for="email">E-Mail</label>
             <input id="email" formControlName="email" type="email" name="email" class="form-control" placeholder="E-Mail" required />
             <span class="text-danger" *ngIf="enviado && form.controls['email'].errors?.['required']">Email obrigatório!</span>
+            <span class="text-danger" *ngIf="enviado && form.controls['email'].errors?.['email']">Email inválido!</span>
         </div>
         <div class="form-group form-outline form-white mb-4">
             <label for="senha">Senha</label>
-            <input id="senha" formControlName="senha" type="password" name="senha" class="form-control" placeholder="Senha" required />
+            <input id="senha" formControlName="senha" type="password" name="senha" class="form-control" placeholder="Senha" maxlength="32" required />
             <span class="text-danger" *ngIf="enviado && form.controls['senha'].errors?.['required']">Senha obrigatória!</span>
         </div>
         <div class="form-group form-outline mb-4">
             <label for="senhaConf">Repita a Senha</label>
-            <input id="senhaConf" formControlName="senhaConf" type="password" name="senhaConf" class="form-control" placeholder="Repita a Senha" required />
+            <input id="senhaConf" formControlName="senhaConf" type="password" name="senhaConf" class="form-control" placeholder="Repita a Senha" maxlength="32" required />
             <span class="text-danger" *ngIf="enviado && form.controls['senhaConf'].errors?.['required']">Confirmação obrigatória!</span>
         </div>
         <div class="form-check mb-3">

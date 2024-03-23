@@ -30,8 +30,15 @@ export class RegistrarComponent implements OnInit {
   /** Armazena na inicialização se o usuário está logado ou não */
   isLogado: boolean = false;
 
+  /**
+   * Number que armazena o tempo (seg.) de timeout para redirecionamento 
+   * realizado no caso do usuário estar logado e, mesmo assim, acessar a
+   * página de login.
+   */
+  tempoEsperado: number = 3;
+
   constructor(private fb: FormBuilder, private router: Router) {
-    this.isLogado = AreaUsuarioHandler.isUserLogado();
+    this.verificaLogin();
   }
 
   /**
@@ -47,6 +54,29 @@ export class RegistrarComponent implements OnInit {
       senha: ['', [Validators.required, Validators.maxLength(32)]],
       senhaConf: ['', [Validators.required, Validators.maxLength(32)]]
     });
+  }
+
+  /** 
+   * Valida o login do usuário e redireciona se confirmado.
+   */
+  private async verificaLogin() {
+    this.isLogado = AreaUsuarioHandler.isUserLogado();
+    if (this.isLogado) {
+      // timeout
+      while (this.tempoEsperado > 0) {
+        let t = this.tempoEsperado;
+
+        await new Promise(function(resolve, reject){
+          setTimeout(function(){
+            console.log("Redirecionando em: " + t + " segundos.");
+            resolve('');
+          }, 1000)
+        });
+
+        this.tempoEsperado--;
+      }
+      this.router.navigate(['']);
+    }
   }
 
   /**
@@ -77,6 +107,7 @@ export class RegistrarComponent implements OnInit {
         let info = AreaUsuarioHandler.getInformacoes();
         if (info[0]['retorno'][0]) {
           info[0]['retorno'][0] = false;
+          AreaUsuarioHandler.setInformacoes(info);
           this.router.navigate([info[0]['retorno'][1]]);
         } else {
           this.router.navigate(['']);

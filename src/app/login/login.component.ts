@@ -50,15 +50,20 @@ export class LoginComponent implements OnInit {
   /** 
    * Valida o login do usuário e redireciona se confirmado.
    */
-  private verificaLogin(): void {
+  private async verificaLogin() {
     this.isLogado = AreaUsuarioHandler.isUserLogado();
     if (this.isLogado) {
       // timeout
       while (this.tempoEsperado > 0) {
         let t = this.tempoEsperado;
-        setTimeout(function(){
-          console.log("Redirecionando em: " + t + " segundos.");
-        }, 1000);
+
+        await new Promise(function(resolve, reject){
+          setTimeout(function(){
+            console.log("Redirecionando em: " + t + " segundos.");
+            resolve('');
+          }, 1000)
+        });
+
         this.tempoEsperado--;
       }
       this.router.navigate(['']);
@@ -94,6 +99,7 @@ export class LoginComponent implements OnInit {
       let info = AreaUsuarioHandler.getInformacoes();
       if (info[0]['retorno'][0]) {
         info[0]['retorno'][0] = false;
+        AreaUsuarioHandler.setInformacoes(info);
         this.router.navigate([info[0]['retorno'][1]]);
       } else {
         this.router.navigate(['']);

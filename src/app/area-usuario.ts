@@ -1,4 +1,4 @@
-import * as sha512 from 'js-sha512';
+import { sha512 } from 'js-sha512';
 
 /**
  * Armazena e administra os dados atuais do browser (localStorage) e, se for o 
@@ -70,7 +70,7 @@ export class AreaUsuarioHandler {
     info[1]['rname'] = uname + ' Da Silva';
     info[1]['telefone'] = '99984999545';
     info[1]['email'] = uname + '_12@exemplo.com';
-    info[1]['senha'] = sha512.sha512(senha);
+    info[1]['senha'] = sha512(senha) as string;
 
     this.setInformacoes(info);
   }
@@ -105,7 +105,7 @@ export class AreaUsuarioHandler {
     info[1]['rname'] = rname;
     info[1]['telefone'] = telefone;
     info[1]['email'] = email;
-    info[1]['senha'] = sha512.sha512(senha);
+    info[1]['senha'] = sha512(senha);
 
     this.setInformacoes(info);
   }

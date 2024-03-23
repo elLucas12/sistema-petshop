@@ -47,8 +47,8 @@
         <button type="submit" class="btn btn-primary w-100">Registrar-se</button>
     </form>
 </div>
-<div *ngIf="isLogado" class="container text-center">
+<div *ngIf="isLogado" class="container text-center mt-4">
     <h1 class="h1">Você está logado em uma conta!</h1>
     <p class="fs-4">Para cadastrar um novo usuário, saia de sua conta...</p>
-    <p class="fs-2">Redirecionando em {{tempoEsperado.toString()}}</p>
+    <p class="fs-2">Redirecionando em {{ this.tempoEsperado.toString() }}</p>
 </div>

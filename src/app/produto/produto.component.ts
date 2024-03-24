@@ -26,8 +26,7 @@ export class ProdutoComponent implements OnInit {
   /** Informações do produto */
   info = infoProdutos;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-  }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   /**
    * Verifica os parametros passados pela url e ajusta os atributos de página

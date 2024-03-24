@@ -1,5 +1,12 @@
 <div *ngIf="this.isProdutoValido" class="container mt-4 w-100">
     <div class="row w-100">
+        <div [style.text-align]="'right'">
+            <a routerLink="/loja" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-75 link-underline-opacity-100-hover">
+                <p class="fs-5">Voltar para loja <i class="bi bi-arrow-return-left"></i></p>
+            </a>
+        </div>
+    </div>
+    <div class="row w-100">
         <!-- Carousel de imagens do produto -->
         <div id="produto-carousel-indicators" class="d-flex flex-column col-sm-12 col-lg-6 mt-4 carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">

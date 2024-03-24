@@ -75,9 +75,7 @@ export class RegistrarComponent implements OnInit {
 
         this.tempoEsperado--;
       }
-      this.router.navigate(['']).then(() => {
-        window.location.reload();
-      });
+      this.router.navigate(['']);
     }
   }
 
@@ -110,9 +108,13 @@ export class RegistrarComponent implements OnInit {
         if (info[0]['retorno'][0]) {
           info[0]['retorno'][0] = false;
           AreaUsuarioHandler.setInformacoes(info);
-          this.router.navigate([info[0]['retorno'][1]]);
+          this.router.navigate([info[0]['retorno'][1]]).then(() => {
+            window.location.reload();
+          });
         } else {
-          this.router.navigate(['']);
+          this.router.navigate(['']).then(() => {
+            window.location.reload();
+          });
         }
       }
     } else {

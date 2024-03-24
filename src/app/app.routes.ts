@@ -11,6 +11,7 @@ import { LicenseComponent } from './license/license.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { FinalizarCompraComponent } from './finalizar-compra/finalizar-compra.component';
+import { ProdutoComponent } from './produto/produto.component';
 
 export const routes: Routes = [
     {
@@ -45,5 +46,9 @@ export const routes: Routes = [
     {
         path: 'finalizar-compra',
         component: FinalizarCompraComponent
+    },
+    {
+        path: 'produto',
+        component: ProdutoComponent
     }
 ];

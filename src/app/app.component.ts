@@ -1,31 +1,54 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
-import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AreaUsuarioHandler } from './area-usuario';
 
 import LocalePT from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 registerLocaleData(LocalePT);
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, FormsModule, ReactiveFormsModule],
+  imports: [RouterOutlet, RouterLink, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
+  /** Título do sistema web por um todo. */
   title = 'sistema-petshop';
+
+  /** Título do sistema derivado - nome do petshop. */
   sysTitle = 'Mangaia Petshop';
 
+  /** Armazena se o usuário está logado. */
+  isLogado: boolean = false;
+
+  /**
+   * Define atributos necessários ao objeto e chama os métodos de inicialização necessários.
+   * 
+   * @param modalService Serviço para abertura de modals.
+   * @param titleService Serviço utilizado para alteração do título de cabeçalho.
+   * @param metaService Serviço utilizado para alteração de metadados do sistema web.
+   */
   constructor(private modalService: NgbModal, private titleService: Title, private metaService: Meta) {
     this.setTitle(this.sysTitle);
     this.metaService.updateTag({name: 'description', content: 'O Petshop de todos os riograndenses.'});
+    this.verificaLogin();
+  }
 
-    this.definirInfoLogin();
+  /**
+   * Verifica o login do usuário e, se for o caso, administra a injeção do template de dados no localStorage.
+   */
+  verificaLogin(): void {
+    this.isLogado = AreaUsuarioHandler.isUserLogado();
+    if (!this.isLogado) {
+      AreaUsuarioHandler.definirPadraoInfo();
+    }
   }
 
   /**
@@ -42,27 +65,5 @@ export class AppComponent {
    */
   public open(modal: any): void {
     this.modalService.open(modal);
-  }
-
-  /**
-   * Escreve uma estrutura padrão no localStorage para o gerenciamento do frontend do usuário.
-   * O tipo Object é escrito aqui para posterior alteração em seus valores, tonando os campos
-   * campos fixos.
-   */
-  private definirInfoLogin() {
-    let info = [
-      {
-        logado: false,
-        retorno: [false, '']
-      },
-      {
-        uname: '',
-        rname: '',
-        telefone: '',
-        email: '',
-        senha: ''
-      }
-    ];
-    AreaUsuarioHandler.setInformacoes(info);
   }
 }

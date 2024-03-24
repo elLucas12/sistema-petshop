@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { FinalizarCompraComponent } from './finalizar-compra/finalizar-compra.component';
 import { ProdutoComponent } from './produto/produto.component';
+import { AreaUsuarioComponent } from './area-usuario/area-usuario.component';
+import { SairComponent } from './sair/sair.component';
 
 export const routes: Routes = [
     {
@@ -50,5 +52,13 @@ export const routes: Routes = [
     {
         path: 'produto',
         component: ProdutoComponent
+    },
+    {
+        path: 'area-usuario',
+        component: AreaUsuarioComponent
+    },
+    {
+        path: 'sair',
+        component: SairComponent
     }
 ];

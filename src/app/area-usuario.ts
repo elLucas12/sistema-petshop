@@ -109,4 +109,26 @@ export class AreaUsuarioHandler {
 
     this.setInformacoes(info);
   }
+
+  /**
+   * Escreve uma estrutura padrão no localStorage para o gerenciamento do frontend do usuário.
+   * O tipo Object é escrito aqui para posterior alteração em seus valores, tonando os campos
+   * campos fixos.
+   */
+  public static definirPadraoInfo() {
+    let info = [
+      {
+        logado: false,
+        retorno: [false, '']
+      },
+      {
+        uname: '',
+        rname: '',
+        telefone: '',
+        email: '',
+        senha: ''
+      }
+    ];
+    this.setInformacoes(info);
+  }
 }

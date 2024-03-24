@@ -75,7 +75,9 @@ export class RegistrarComponent implements OnInit {
 
         this.tempoEsperado--;
       }
-      this.router.navigate(['']);
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
+      });
     }
   }
 

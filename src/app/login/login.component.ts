@@ -100,9 +100,13 @@ export class LoginComponent implements OnInit {
       if (info[0]['retorno'][0]) {
         info[0]['retorno'][0] = false;
         AreaUsuarioHandler.setInformacoes(info);
-        this.router.navigate([info[0]['retorno'][1]]);
+        this.router.navigate([info[0]['retorno'][1]]).then(() => {
+          window.location.reload();
+        });
       } else {
-        this.router.navigate(['']);
+        this.router.navigate(['/area-usuario']).then(() => {
+          window.location.reload();
+        });
       }
     } else {
       this.markAllControlsAsDirty(Object.values(this.form.controls));

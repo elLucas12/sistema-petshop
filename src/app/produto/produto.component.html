@@ -1,4 +1,4 @@
-<div *ngIf="this.isProdutoValido" class="container d-flex flex-row mt-4 w-100">
+<div *ngIf="this.isProdutoValido" class="container mt-4 w-100">
     <div class="row w-100">
         <!-- Carousel de imagens do produto -->
         <div id="produto-carousel-indicators" class="d-flex flex-column col-sm-12 col-lg-6 mt-4 carousel carousel-dark slide" data-bs-ride="carousel">
@@ -23,7 +23,28 @@
             </button>
         </div>
         <div class="d-flex flex-column mt-4 col-sm-12 col-lg-6">
-            <h1 class="h1">Arroz com Feijão</h1>
+            <h1 class="h1">{{ info[this.productId - 1]['titulo'] }}</h1>
+            <div class="row">
+                <p class="col-6 fs-5" [style.text-decoration]="'underline'">{{ info[this.productId - 1]['tipo'] }}</p>
+                <p class="col-6 fs-5 text-primary"><b>Marca:</b> {{ info[this.productId - 1]['marca'] }}</p>
+            </div>
+            <div class="row">
+                <p class="col-1 fs-4">R$</p>
+                <p class="col-11 fs-1">{{ info[this.productId - 1]['valor'] | number:'1.2-2':'pt-BR' }}</p>
+            </div>
+            <p class="fs-6 br-par">{{ info[this.productId - 1]['descricao'][0] }}</p>
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-lg-6 col-sm-12">
+            <p class="fs-6 br-par mt-lg-4 mt-sm-1">{{ info[this.productId - 1]['descricao'][1] }}</p>
+            <p class="fs-6 br-par mt-lg-4 mt-sm-1">{{ info[this.productId - 1]['descricao'][2] }}</p>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="d-flex w-100" style="gap:10px;">
+                <button type="button" class="btn btn-success col-6 text-uppercase p-2"><i class="bi bi-cart px-2 h4"></i>Adicionar ao Carrinho</button>
+                <button type="button" class="btn btn-success col-6 text-uppercase p-2"><i class="bi bi-bag px-2 h4"></i>Comprar</button>
+            </div>
         </div>
     </div>
 </div>

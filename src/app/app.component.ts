@@ -6,6 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AreaUsuarioHandler } from './area-usuario';
 
+import LocalePT from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(LocalePT);
+
 @Component({
   selector: 'app-root',
   standalone: true,

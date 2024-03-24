@@ -1,12 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CalendarView, CalendarEvent, CalendarModule } from 'angular-calendar';
 import { Router } from '@angular/router';
 
 import { AgendamentoHandler, Servico, Porte } from '../agendamento';
-
-import LocalePT from '@angular/common/locales/pt';
-registerLocaleData(LocalePT);
 
 @Component({
   selector: 'app-servicos',

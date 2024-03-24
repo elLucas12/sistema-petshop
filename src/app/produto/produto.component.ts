@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import infoProdutos from '../../assets/produtos.json';
+
 @Component({
   selector: 'app-produto',
   standalone: true,
@@ -21,10 +23,15 @@ export class ProdutoComponent implements OnInit {
   /** Armazena se os parametros batem com o storage de produtos. */
   isProdutoValido: boolean = true;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  /** Informações do produto */
+  info = infoProdutos;
+
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
 
   /**
-   * Verifica os parametros passados pela url e ajusta os atributos de página.
+   * Verifica os parametros passados pela url e ajusta os atributos de página
+   * para o respectivo produto.
    */
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -33,6 +40,7 @@ export class ProdutoComponent implements OnInit {
         if (!id || Number.isNaN(Number(id))) {
           throw Error('ID inválido!!');
         } else {
+          // Definindo ID do produto.
           this.productId = Number(id);
           this.srcImagem += id;
         }

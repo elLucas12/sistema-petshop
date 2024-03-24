@@ -3,3 +3,8 @@ html, body {
     width: 100%;
     margin: 0;
 }
+
+.br-par {
+    text-indent: 3rem;
+    text-align: justify;
+}

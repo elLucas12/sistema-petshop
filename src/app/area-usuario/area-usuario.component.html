@@ -1,1 +1,8 @@
-<p>area-usuario works!</p>
+<div *ngIf="isLogado" class="container">
+    <h1 class="h1 text-center">Área de Usuário</h1>
+</div>
+<div *ngIf="!isLogado" class="container text-center mt-4">
+    <h1 class="h1">Você NÃO está logado!</h1>
+    <p class="fs-4">Para entrar com um usuário, acesse a página de login...</p>
+    <p class="fs-2">Redirecionando em {{ this.tempoEsperado.toString() }}</p>
+</div>

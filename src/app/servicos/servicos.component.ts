@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarView, CalendarEvent, CalendarModule } from 'angular-calendar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AgendamentoHandler, Servico, Porte } from '../agendamento';
 
@@ -22,7 +22,7 @@ import { AgendamentoHandler, Servico, Porte } from '../agendamento';
   templateUrl: './servicos.component.html',
   styleUrl: './servicos.component.css'
 })
-export class ServicosComponent {
+export class ServicosComponent implements OnInit {
   /** String de locale para especificar o formato de calendário. */
   locale: string = 'pt-BR';
 
@@ -55,7 +55,26 @@ export class ServicosComponent {
    * 
    * @param {Router} router Obj. utilizado para roteamento dentro do sistema.
    */
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  /**
+   * Verifica os parametros passados pela url e ajusta os atributos de página
+   * para o respectivo tipo de serviço para facilitar o acesso direto.
+   */
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const tipo = params['tipo'];
+      if (parseInt(tipo) === Servico.banho) {
+        this.isServicoSelecionado = true;
+        this.servicoSelecionado = Servico.banho;
+      } else if (parseInt(tipo) === Servico.tosa) {
+        this.isServicoSelecionado = true;
+        this.servicoSelecionado = Servico.tosa;
+      } else {
+        console.error('Parametro de tipo de serviço para serviços inválido!');
+      }
+    });
+  }
 
   /** Armazena os eventos de calendário - PADRAO: nenhum */
   eventosCalendario: CalendarEvent[] = [];

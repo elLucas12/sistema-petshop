@@ -1,20 +1,4 @@
-<div *ngIf="!isPorteSelecionado">
-    <div class="container d-flex flex-row w-100 mt-4">
-        <a (click)="selecaoPorte(1)" class="d-flex flex-column w-50 img-esq link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-            <div class="text-uppercase justify-content-center text-center mt-4">
-                <h1 class="h1">Grande Porte</h1>
-            </div>
-            <img class="rounded mx-auto d-block w-75" src="/assets/images/grande_porte.png"/>
-        </a>
-        <a (click)="selecaoPorte(0)" class="d-flex flex-column w-50 img-dir link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-            <div class="text-uppercase justify-content-center text-center mt-4">
-                <h1 class="h1">Pequeno Porte</h1>
-            </div>
-            <img class="rounded mx-auto d-block w-75" src="/assets/images/pequeno_porte.png"/>
-        </a>
-    </div>
-</div>
-<div *ngIf="!isServicoSelecionado && isPorteSelecionado">
+<div *ngIf="!isServicoSelecionado">
     <div class="container d-flex flex-row w-100 mt-4">
         <a (click)="selecaoServico(1)" class="d-flex flex-column w-50 img-esq link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
             <div class="text-uppercase justify-content-center text-center mt-4">
@@ -30,7 +14,23 @@
         </a>
     </div>
 </div>
-<div class="container mt-4" *ngIf="isPorteSelecionado && isServicoSelecionado && !isDataSelecionada">
+<div *ngIf="isServicoSelecionado && !isPorteSelecionado">
+    <div class="container d-flex flex-row w-100 mt-4">
+        <a (click)="selecaoPorte(1)" class="d-flex flex-column w-50 img-esq link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+            <div class="text-uppercase justify-content-center text-center mt-4">
+                <h1 class="h1">Grande Porte</h1>
+            </div>
+            <img class="rounded mx-auto d-block w-75" src="/assets/images/grande_porte.png"/>
+        </a>
+        <a (click)="selecaoPorte(0)" class="d-flex flex-column w-50 img-dir link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+            <div class="text-uppercase justify-content-center text-center mt-4">
+                <h1 class="h1">Pequeno Porte</h1>
+            </div>
+            <img class="rounded mx-auto d-block w-75" src="/assets/images/pequeno_porte.png"/>
+        </a>
+    </div>
+</div>
+<div class="container mt-4" *ngIf="isServicoSelecionado && isPorteSelecionado && !isDataSelecionada">
     <div class="row text-center">
         <div class="col-md-4">
             <div class="btn-group">

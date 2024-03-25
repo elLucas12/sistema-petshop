@@ -3,6 +3,8 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AreaUsuarioHandler } from '../area-usuario';
 import { CommonModule } from '@angular/common';
 
+import { Servico } from '../agendamento';
+
 /**
  * Componente para a Área restrita de usuários. Apresenta funcionalidades únicas
  * para os usuários logados no sistema web, como visualização de agenda e histórico
@@ -26,6 +28,9 @@ export class AreaUsuarioComponent implements OnInit {
 
   /** Armazena na inicialização se o usuário está logado ou não */
   isLogado: boolean = false;
+
+  /** Enum de tipo de serviço para o redirecionamento a partir do componente 'servicos'. */
+  Servico = Servico;
 
   constructor(private router: Router) {
     this.verificaLogin();

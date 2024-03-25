@@ -55,4 +55,18 @@ export class AgendamentoHandler {
     let agendamento = this.getInformacoes();
     return new Date(Date.parse(agendamento['data']));
   }
+
+  /**
+   * Escreve uma estrutura padrão no localStorage para o gerenciamento do frontend do usuário.
+   * O tipo Object é escrito aqui para posterior alteração em seus valores, tonando os campos
+   * campos fixos.
+   */
+  public static definirPadraoInfo() {
+    let info = {
+      data_agendamento: '',
+      servico: 0,
+      porte: 0
+    };
+    this.setInformacoes(info);
+  }
 }

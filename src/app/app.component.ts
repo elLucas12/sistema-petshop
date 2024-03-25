@@ -4,6 +4,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AreaUsuarioHandler } from './area-usuario';
+import { AgendamentoHandler } from './agendamento';
 
 import LocalePT from '@angular/common/locales/pt';
 import { CommonModule, registerLocaleData } from '@angular/common';
@@ -47,6 +48,7 @@ export class AppComponent {
     this.isLogado = AreaUsuarioHandler.isUserLogado();
     if (!this.isLogado) {
       AreaUsuarioHandler.definirPadraoInfo();
+      AgendamentoHandler.definirPadraoInfo();
     }
   }
 

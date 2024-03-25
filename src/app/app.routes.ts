@@ -67,6 +67,7 @@ export const routes: Routes = [
             },
             {
                 path: 'agenda',
+                providers: [importProvidersFrom(CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}))],
                 component: AgendaComponent
             },
             {

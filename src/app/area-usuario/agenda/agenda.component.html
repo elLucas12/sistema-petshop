@@ -1,1 +1,26 @@
-<p>agenda works!</p>
+<div class="container mt-4">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="btn-group">
+                <div class="btn btn-primary" mwlCalendarPreviousView [view]="viewCalendario" [(viewDate)]="viewDateCalendario">
+                    Anterior
+                </div>
+                <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDateCalendario">
+                    Hoje
+                </div>
+                <div class="btn btn-primary" mwlCalendarNextView [view]="viewCalendario" [(viewDate)]="viewDateCalendario">
+                    Próximo
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h3>{{ viewDateCalendario | calendarDate:(viewCalendario + 'ViewTitle'):locale }}</h3>
+        </div>
+    </div>
+
+    <div [ngSwitch]="viewCalendario">
+        <mwl-calendar-month-view (dayClicked)="cliqueDia($event.day)" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDateCalendario" [events]="eventosCalendario" [locale]="locale">
+        </mwl-calendar-month-view>
+    </div>
+</div>

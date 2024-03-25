@@ -50,6 +50,9 @@ export class ServicosComponent implements OnInit {
   /** Armazena se a data de agendamento já foi selecionada. */
   isDataSelecionada: boolean = false;
 
+  /** Armazena os eventos de calendário - PADRAO: nenhum */
+  eventosCalendario: CalendarEvent[] = [];
+
   /**
    * Armazena os atributos necessários e inicializa os dados de objeto.
    * 
@@ -75,9 +78,6 @@ export class ServicosComponent implements OnInit {
       }
     });
   }
-
-  /** Armazena os eventos de calendário - PADRAO: nenhum */
-  eventosCalendario: CalendarEvent[] = [];
 
   /**
    * Define o porte do pet dentro do objeto.

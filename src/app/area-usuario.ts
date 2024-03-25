@@ -95,7 +95,7 @@ export class AreaUsuarioHandler {
     
     // Informações de login e redirecionamento.
     info[0]['logado'] = true;
-    if (!info[0]['retorno'][1]) {
+    if (!info[0]['retorno'][0]) {
       info[0]['retorno'][0] = true;
       info[0]['retorno'][1] = '';
     }
@@ -106,6 +106,41 @@ export class AreaUsuarioHandler {
     info[1]['telefone'] = telefone;
     info[1]['email'] = email;
     info[1]['senha'] = sha512(senha);
+
+    this.setInformacoes(info);
+  }
+
+  /**
+   * Realiza um registro de usuário para fins de teste do front-end do sistema web, 
+   * sem realizar acesso à rede ou serviço externo.
+   * 
+   * Após o registro é possível realizar um redirecionamento para determinada página,
+   * conforme especificação de API do projeto. Desse modo, verifica-se o atributo
+   * 'retorno' das informações do storage e armazena o valor padrão '/' (relativo à 
+   * página inicial do sistema).
+   * 
+   * @param uname Nome de usuário no registro.
+   * @param rname Nome real do usuário no registro.
+   * @param telefone Número de telefone do usuário.
+   * @param email Endereço de e-mail do usuário.
+   * @param senha Senha do usuário.
+   */
+  public static makeExemploRegistroPet(nome: string, nascimento: string, especie: string, raca: string, pelagem: string) {
+    let info = this.getInformacoes();
+    
+    // Informações de login e redirecionamento.
+    info[0]['logado'] = true;
+    if (!info[0]['retorno'][0]) {
+      info[0]['retorno'][0] = true;
+      info[0]['retorno'][1] = '';
+    }
+    
+    // Informações de usuário.
+    info[2]['nome'] = nome;
+    info[2]['nascimento'] = nascimento;
+    info[2]['especie'] = especie;
+    info[2]['raca'] = raca;
+    info[2]['pelagem'] = pelagem;
 
     this.setInformacoes(info);
   }
@@ -127,6 +162,13 @@ export class AreaUsuarioHandler {
         telefone: '',
         email: '',
         senha: ''
+      },
+      {
+        nome: '',
+        nascimento: '',
+        especie: '',
+        raca: '',
+        pelagem: ''
       }
     ];
     this.setInformacoes(info);

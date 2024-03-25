@@ -1,6 +1,79 @@
 <div *ngIf="this.tipo === TipoCadastro.usuario">
-    <h1 class="h1 text-center">Informações de Usuário</h1>
+    <form [formGroup]="form" (ngSubmit)="atualizarRegistro()">
+        <div class="text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Informações de Usuário</h2>
+            <p class="mb-3">Atualize por aqui seus dados cadastrais...</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-sm-12">
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="uname">Nome de Usuário</label>
+                    <input id="uname" formControlName="uname" type="text" name="uname" class="form-control" placeholder="Nome de Usuário" aria-describedby="uname-desc" maxlength="32"  />
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="rname">Nome Completo</label>
+                    <input id="rname" formControlName="rname" type="text" name="rname" class="form-control" placeholder="Nome Completo" maxlength="64"  />
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="telefone">Número de Telefone</label>
+                    <input id="telefone" formControlName="telefone" type="tel" name="telefone" class="form-control" placeholder="Número de Telefone" minlength="10" maxlength="14"  />
+                    <span class="text-danger" *ngIf="enviado && (form.controls['telefone'].errors?.['minlength'] || form.controls['telefone'].errors?.['maxlength'])">Número de telefone inválido!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="email">E-Mail</label>
+                    <input id="email" formControlName="email" type="email" name="email" class="form-control" placeholder="E-Mail"  />
+                    <span class="text-danger" *ngIf="enviado && form.controls['email'].errors?.['email']">Email inválido!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-8">
+                <button type="submit" class="btn btn-primary w-100">Atualizar Cadastro</button>
+            </div>
+        </div>
+    </form>
 </div>
 <div *ngIf="this.tipo === TipoCadastro.pet">
-    <h1 class="h1 text-center">Cadastro Pet</h1>
+    <form [formGroup]="formPet" (ngSubmit)="atualizarRegistroPet()">
+        <div class="text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Cadastro de Pet</h2>
+            <p class="mb-3">Atualize/Adicione o cadastro de seus pets...</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-sm-12">
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="nome">Nome</label>
+                    <input id="nome" formControlName="nome" type="text" name="nome" class="form-control" placeholder="Nome" aria-describedby="nome-desc" maxlength="32"  />
+                    <span class="text-danger" *ngIf="enviado && (formPet.controls['nome'].errors?.['maxlength'])">Nome inválido!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="nascimento">Nascimento</label>
+                    <input id="nascimento" formControlName="nascimento" type="date" name="nascimento" class="form-control" placeholder="Nascimento" maxlength="64"  />
+                    <span class="text-danger" *ngIf="enviado && (formPet.controls['nascimento'].errors?.['pattern'])">Nascimento inválido!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="especie">Espécie</label>
+                    <input id="especie" formControlName="especie" type="text" name="especie" class="form-control" placeholder="Espécie" maxlength="64"  />
+                    <span class="text-danger" *ngIf="enviado && (formPet.controls['especie'].errors?.['maxlength'])">Espécie inválida!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="raca">Raça</label>
+                    <input id="raca" formControlName="raca" type="text" name="raca" class="form-control" placeholder="Raça" maxlength="64" />
+                    <span class="text-danger" *ngIf="enviado && formPet.controls['raca'].errors?.['maxlength']">Raça inválida</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="pelagem">Pelagem</label>
+                    <input id="pelagem" formControlName="pelagem" type="text" name="pelagem" class="form-control" placeholder="Pelagem" maxlength="64" />
+                    <span class="text-danger" *ngIf="enviado && formPet.controls['pelagem'].errors?.['maxlength']">Pelagem inválida</span>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-8">
+                <button type="submit" class="btn btn-primary w-100">Atualizar Cadastro</button>
+            </div>
+        </div>
+    </form>
 </div>

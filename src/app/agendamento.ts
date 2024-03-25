@@ -53,7 +53,7 @@ export class AgendamentoHandler {
    */
   public static getDiaAgendamento(): Date {
     let agendamento = this.getInformacoes();
-    return new Date(Date.parse(agendamento['data']));
+    return new Date(agendamento['data']);
   }
 
   /**
@@ -63,7 +63,7 @@ export class AgendamentoHandler {
    */
   public static definirPadraoInfo() {
     let info = {
-      data_agendamento: '',
+      data: new Date(),
       servico: 0,
       porte: 0
     };

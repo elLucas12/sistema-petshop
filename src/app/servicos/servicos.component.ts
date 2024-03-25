@@ -74,7 +74,9 @@ export class ServicosComponent implements OnInit {
         this.isServicoSelecionado = true;
         this.servicoSelecionado = Servico.tosa;
       } else {
-        console.error('Parametro de tipo de serviço para serviços inválido!');
+        if (!(typeof tipo === 'undefined')) {
+          console.error('Parametro de tipo de serviço para serviços inválido!');
+        }
       }
     });
   }
@@ -120,7 +122,7 @@ export class ServicosComponent implements OnInit {
     if (val) {
       // Redefinindo dados de agendamento no localStorage
       let agendamento = {
-        data_agendamento: date.toUTCString(),
+        data_agendamento: date.toLocaleString(),
         servico: this.servicoSelecionado,
         porte: this.porteSelecionado,
       };

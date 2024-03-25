@@ -1,6 +1,38 @@
-<div>
-    <h1 class="h1">Para qual horário deseja agendar?</h1>
-    <form>
-        <input type="time" />
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="agendar()">
+        <div class="text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Agendamento</h2>
+            <p class="mb-3">Adicione as informações a seguir:</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-sm-12">
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="horarioAgendamento">Horário de Agendamento</label>
+                    <input id="horarioAgendamento" formControlName="horarioAgendamento" type="time" name="horarioAgendamento" class="form-control" aria-describedby="nome-desc"  />
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="servico">Tipo de Serviço</label>
+                    <select class="form-control" id="servico" formControlName="servico" placeholder="Serviço">
+                        <option>Banho</option>
+                        <option>Tosa</option>
+                    </select>
+                    <span class="text-danger" *ngIf="enviado && (form.controls['servico'].errors?.['verificaServico'])">Serviço inválido!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="porte">Porte</label>
+                    <select class="form-control" id="porte" formControlName="porte" placeholder="Porte">
+                        <option>Pequeno</option>
+                        <option>Grande</option>
+                    </select>
+                    <span class="text-danger" *ngIf="enviado && (form.controls['porte'].errors?.['verificaPorte'])">Porte inválido!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-8">
+                <button type="submit" class="btn btn-primary w-100">Agendar</button>
+            </div>
+        </div>
     </form>
 </div>

@@ -55,16 +55,18 @@ export class AgendaComponent {
     console.log(`Data selecionada => "${date}"`);
     
     // Redefinindo dados de agendamento no localStorage
-    let diaAgendamento = date.toUTCString();
     let agendamento = {
-      data_agendamento: diaAgendamento,
+      data: date,
       servico: Servico.banho,
       porte: Porte.pequeno
     }
     AgendamentoHandler.setInformacoes(agendamento);
+
+    // administrando o popup de informações.
     const popupAgendamentoRef = this.modalService.open(PopupAgendamentoComponent);
-    // console.log(`Definida data de agenda: "${date.toLocaleDateString()}"`);
-    // this.router.navigate(['/finalizar-compra']);
+    popupAgendamentoRef.result.then((data) => {
+      console.log(`Definida data de agenda: "${AgendamentoHandler.getDiaAgendamento().toLocaleString()}"`);
+      alert(`Data definida para data "${AgendamentoHandler.getDiaAgendamento().toLocaleString()}".`);
+    });
   }
-  
 }

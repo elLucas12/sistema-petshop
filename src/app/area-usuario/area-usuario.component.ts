@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AreaUsuarioHandler } from '../area-usuario';
 import { CommonModule } from '@angular/common';
 
+/**
+ * Componente para a Área restrita de usuários. Apresenta funcionalidades únicas
+ * para os usuários logados no sistema web, como visualização de agenda e histórico
+ * de compra e serviços.
+ */
 @Component({
   selector: 'app-area-usuario',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './area-usuario.component.html',
   styleUrl: './area-usuario.component.css'
 })

@@ -112,7 +112,7 @@ export class RegistrarComponent implements OnInit {
             window.location.reload();
           });
         } else {
-          this.router.navigate(['']).then(() => {
+          this.router.navigate(['/area-usuario']).then(() => {
             window.location.reload();
           });
         }

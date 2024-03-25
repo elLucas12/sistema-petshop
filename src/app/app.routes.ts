@@ -12,8 +12,12 @@ import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { FinalizarCompraComponent } from './finalizar-compra/finalizar-compra.component';
 import { ProdutoComponent } from './produto/produto.component';
-import { AreaUsuarioComponent } from './area-usuario/area-usuario.component';
 import { SairComponent } from './sair/sair.component';
+
+import { AreaUsuarioComponent } from './area-usuario/area-usuario.component';
+import { HistoricoComponent } from './area-usuario/historico/historico.component';
+import { AgendaComponent } from './area-usuario/agenda/agenda.component';
+import { CadastroComponent } from './area-usuario/cadastro/cadastro.component';
 
 export const routes: Routes = [
     {
@@ -55,7 +59,21 @@ export const routes: Routes = [
     },
     {
         path: 'area-usuario',
-        component: AreaUsuarioComponent
+        component: AreaUsuarioComponent,
+        children: [
+            {
+                path: 'historico',
+                component: HistoricoComponent
+            },
+            {
+                path: 'agenda',
+                component: AgendaComponent
+            },
+            {
+                path: 'cadastro',
+                component: CadastroComponent
+            }
+        ]
     },
     {
         path: 'sair',

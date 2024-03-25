@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AreaUsuarioHandler } from '../area-usuario';
 import { CommonModule } from '@angular/common';
 
@@ -11,11 +11,11 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-area-usuario',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './area-usuario.component.html',
   styleUrl: './area-usuario.component.css'
 })
-export class AreaUsuarioComponent {
+export class AreaUsuarioComponent implements OnInit {
 
   /**
    * Number que armazena o tempo (seg.) de timeout para redirecionamento 
@@ -29,6 +29,15 @@ export class AreaUsuarioComponent {
 
   constructor(private router: Router) {
     this.verificaLogin();
+  }
+
+  /** 
+   * Altera o routeroutlet para alteração de informações de usuário.
+   */
+  ngOnInit(): void {
+    if (this.isLogado) {
+      this.router.navigate(['/area-usuario/cadastro'], { queryParams: { tipo: 'usuario' } });
+    }
   }
 
   /** 

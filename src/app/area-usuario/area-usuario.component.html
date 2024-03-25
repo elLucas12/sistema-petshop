@@ -7,7 +7,7 @@
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a routerLink="/area-usuario" class="nav-link align-middle px-0">
+                        <a routerLink="/area-usuario/cadastro" [queryParams]="{ tipo: 'usuario' }" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Início</span>
                         </a>
                     </li>
@@ -18,10 +18,10 @@
                         </a>
                         <ul class="collapse nav show flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0"><i class="bi bi-arrow-right mx-2"></i> <span class="d-none d-sm-inline">De</span> Serviços</a>
+                                <a routerLink="/area-usuario/historico" [queryParams]="{ tipo: 'servicos' }" class="nav-link px-0"><i class="bi bi-arrow-right mx-2"></i> <span class="d-none d-sm-inline">De</span> Serviços</a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"><i class="bi bi-arrow-right mx-2"></i> <span class="d-none d-sm-inline">De</span> Compras</a>
+                                <a routerLink="/area-usuario/historico" [queryParams]="{ tipo: 'loja' }" class="nav-link px-0"><i class="bi bi-arrow-right mx-2"></i> <span class="d-none d-sm-inline">De</span> Compras</a>
                             </li>
                         </ul>
                     </li>
@@ -39,12 +39,12 @@
                     </li>
                     <hr />
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle">
+                        <a routerLink="/area-usuario/cadastro" [queryParams]="{ tipo: 'pet' }" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-person-add"></i> <span class="ms-1 d-none d-sm-inline">Cadastro Pet</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle">
+                        <a routerLink="/area-usuario/agenda" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Agenda</span>
                         </a>
                     </li>
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="col py-3">
-            Content area...
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

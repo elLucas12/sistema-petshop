@@ -5,9 +5,14 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:sistema-petshop": "node dist/sistema-petshop/server/server.mjs"
+    "serve:ssr:sistema-petshop": "node dist/sistema-petshop/server/server.mjs",
+    "e2e": "ng e2e",
+    "clean": "rimraf ./dist",
+    "lint": "ng lint",
+    "build:ci": "npm run clean && npm run test && npm run build:prod"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +50,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "puppeteer": "^22.6.1",
     "typescript": "~5.4.2"
   }
 }

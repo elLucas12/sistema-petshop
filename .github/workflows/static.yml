@@ -16,7 +16,7 @@ jobs:
       - name: Node $
         uses: actions/setup-node@v1
         with:
-          node-version: $
+          node-version: 18.19.0
 
       - name: npm install and npm run build
         run: |

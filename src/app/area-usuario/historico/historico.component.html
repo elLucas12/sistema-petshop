@@ -1,6 +1,50 @@
 <div *ngIf="this.tipo === TipoHistorico.servicos">
     <h1 class="h1 text-center">Histórico de Serviços</h1>
+    <div class="card">
+        <div class="card-header">
+            Serviço de Tosa
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Dia 10/10/2023</h5>
+            <p class="card-text">O pet se comportou bem - recomendamos ser tosado com mais frequência.</p>
+            <a routerLink="/servicos" [queryParams]="{ tipo: Servico.tosa }" class="btn btn-primary">Repetir Serviço</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Serviço de Banho
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Dia 24/12/2023</h5>
+            <p class="card-text">Pet um pouco agitado, tivemos que acalma-lo um pouco - no geral, a estadia foi tranquila.</p>
+            <a routerLink="/servicos" [queryParams]="{ tipo: Servico.banho }" class="btn btn-primary">Repetir Serviço</a>
+        </div>
+    </div>
 </div>
 <div *ngIf="this.tipo === TipoHistorico.loja">
     <h1 class="h1 text-center">Histórico de Compras na Loja</h1>
+    <div class="card">
+        <div class="card-header">
+            Compra <b>R$ 110,00</b>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Dia 01/02/2024</h5>
+            <ul>
+                <li>Pacote de Ração Média Léo Péricles - Cão Médio/Adulto 10kg</li>
+            </ul>
+            <a routerLink="/finalizar-compra" [queryParams]="{ tipo: Servico.tosa }" class="btn btn-primary">Repetir Compra</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Compra <b>R$ 350,00</b>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Dia 10/02/2024</h5>
+            <ul>
+                <li>Pacote de Ração Média Léo Péricles - Gato Médio/Adulto 5kg</li>
+            </ul>
+            <a routerLink="/finalizar-compra" [queryParams]="{ tipo: Servico.tosa }" class="btn btn-primary">Repetir Compra</a>
+        </div>
+    </div>
 </div>

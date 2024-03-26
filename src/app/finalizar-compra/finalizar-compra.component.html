@@ -1,1 +1,64 @@
-<p>finalizar-compra works!</p>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12 col-lg-6">
+            <form [formGroup]="form" (ngSubmit)="completarCompra()">
+                <div class="text-left">
+                    <h2 class="fw-bold mb-2 text-uppercase">Finalizar Compra</h2>
+                    <p class="mb-3">Entre com seus dados para o transporte!</p>
+                </div>
+        
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="nome">Nome</label>
+                    <input id="nome" formControlName="nome" type="text" name="nome" class="form-control" placeholder="Nome Completo" maxlength="64" required />
+                    <span class="text-danger" *ngIf="enviado && form.controls['nome'].errors?.['required']">Nome é obrigatório!</span>
+                    <span class="text-danger" *ngIf="enviado && form.controls['nome'].errors?.['maxlength']">Nome muito grande!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="endereco">Endereço</label>
+                    <input id="endereco" formControlName="endereco" type="text" name="endereco" class="form-control" placeholder="Endereço de Residência" maxlength="128" required />
+                    <span class="text-danger" *ngIf="enviado && form.controls['endereco'].errors?.['required']">Endereço é obrigatório!</span>
+                    <span class="text-danger" *ngIf="enviado && form.controls['endereco'].errors?.['maxlength']">Endereço é muito grande!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="cep">CEP</label>
+                    <input id="cep" formControlName="cep" type="text" name="cep" class="form-control" placeholder="Número CEP" maxlength="10" minlength="8" required />
+                    <span class="text-danger" *ngIf="enviado && form.controls['cep'].errors?.['required']">CEP é obrigatório!</span>
+                    <span class="text-danger" *ngIf="enviado && form.controls['cep'].errors?.['maxlength']">CEP é muito grande!</span>
+                    <span class="text-danger" *ngIf="enviado && form.controls['cep'].errors?.['minlength']">CEP é muito pequeno!</span>
+                </div>
+                <div class="form-group form-outline form-white mb-4">
+                    <label for="complemento">Endereço</label>
+                    <input id="complemento" formControlName="complemento" type="text" name="complemento" class="form-control" placeholder="Complemento do Endereço" maxlength="64" />
+                    <span class="text-danger" *ngIf="enviado && form.controls['complemento'].errors?.['maxlength']">Complemento é muito grande!</span>
+                </div>
+                <hr class="hr" />
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="form-group form-outline form-white mb-4">
+                            <label for="formaPagamento"><i class="bi bi-wallet2"></i> Forma de Pagamento</label>
+                            <select class="form-control form-select" id="formaPagamento" formControlName="formaPagamento" required>
+                                <option>Pix</option>
+                                <option>Boleto</option>
+                                <option>Cartão de Crédito</option>
+                                <option>Cartão de Débito</option>
+                            </select>
+                            <span class="text-danger" *ngIf="enviado && form.controls['formaPagamento'].errors?.['required']">Forma de pagamento é obrigatória!</span>
+                            <span class="text-danger" *ngIf="enviado && (form.controls['formaPagamento'].errors?.['verificaFormaPagamento'])">Forma de pagamento inválido!</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <button type="submit" class="btn btn-success w-100 col-12">Completar Pagamento</button>
+                        <small class="col-12 form-text text-muted">em até 4x sem juros!</small>
+                        <div *ngIf="this.isAgendamento" class="form-group form-check form-outline form-white mb-4 col-12">
+                            <input class="form-check-input" type="checkbox" value="" id="buscarPet" checked />
+                            <label class="form-check-label" for="buscarPet">Buscar pet em casa</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12 col-lg-6">
+            <img src="/assets/images/cart.png" class="d-flex mx-auto" />
+        </div>
+    </div>
+</div>

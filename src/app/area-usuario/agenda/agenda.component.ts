@@ -66,7 +66,8 @@ export class AgendaComponent {
     const popupAgendamentoRef = this.modalService.open(PopupAgendamentoComponent);
     popupAgendamentoRef.result.then((data) => {
       console.log(`Definida data de agenda: "${AgendamentoHandler.getDiaAgendamento().toLocaleString()}"`);
-      alert(`Data definida para data "${AgendamentoHandler.getDiaAgendamento().toLocaleString()}".`);
+      confirm(`Data definida para data "${AgendamentoHandler.getDiaAgendamento().toLocaleString()}".`);
+      this.router.navigate(['/finalizar-compra'], { queryParams: { tipo: 'agendamento' } });
     });
   }
 }

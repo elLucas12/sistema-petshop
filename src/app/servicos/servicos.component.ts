@@ -129,7 +129,7 @@ export class ServicosComponent implements OnInit {
       AgendamentoHandler.setInformacoes(agendamento);
 
       console.log(`Definida data de agenda: "${date.toLocaleDateString()}"`);
-      this.router.navigate(['/finalizar-compra']);
+      this.router.navigate(['/finalizar-compra'], { queryParams: { tipo: 'agendamento' } });
     }
   }
 }

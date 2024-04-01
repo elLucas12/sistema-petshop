@@ -15,7 +15,7 @@ import infoProdutos from '../../assets/produtos.json';
 export class ProdutoComponent implements OnInit {
 
   /** Caminho para as imagens de produto e seu carousel. */
-  srcImagem: string = 'assets/produtos/produto';
+  srcImagem: string = '/sistema-petshop/assets/produtos/produto';
 
   /** Número do produto passado por get. */
   productId: number = 0;

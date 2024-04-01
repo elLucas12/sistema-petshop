@@ -19,6 +19,7 @@ export class AreaUsuarioHandler {
    */
   public static isUserLogado(): boolean {
     let infoLogin = this.getInformacoes();
+    if (infoLogin === null) return false;
     return infoLogin[0]['logado'];
   }
 

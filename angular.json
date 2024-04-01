@@ -36,7 +36,6 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/sistema-petshop/",
               "budgets": [
                 {
                   "type": "initial",
